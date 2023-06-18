@@ -8,14 +8,17 @@ import java.util.Scanner;
 public class ClienteRMI {
     public static void main(String[] args) {
         
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         try {
 
             ////// MUDAR IP
             ////// Exemplo 
             // Registry registry = LocateRegistry.getRegistry("198.168.15.11", 50051);
-            
-            Registry registry = LocateRegistry.getRegistry("179.99.71.34", 50051);
+            System.out.println("Digite o ip a ser utilizado: ");
+            String ip = sc.nextLine();
+            System.out.println("Digite a porta a ser utilizada: ");
+            int porta = sc.nextInt();
+            Registry registry = LocateRegistry.getRegistry(ip, porta);
 
             Testes testes = (Testes) registry.lookup("Testes");
             
@@ -31,7 +34,7 @@ public class ClienteRMI {
                 System.out.println("4. String");
                 System.out.println("5. Classe");
 
-                int opcao = scanner.nextInt();
+                int opcao = sc.nextInt();
                 System.out.println("###".repeat(8));
                 
                 long startTime = System.currentTimeMillis();
@@ -64,7 +67,7 @@ public class ClienteRMI {
             System.err.println("Erro no cliente: " + e.toString());
             e.printStackTrace();
         }
-        scanner.close();
+        sc.close();
     }
 
     public static void testarVoid(Testes testes) throws RemoteException {

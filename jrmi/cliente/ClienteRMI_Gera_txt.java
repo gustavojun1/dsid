@@ -5,9 +5,11 @@ import java.rmi.registry.Registry;
 import java.util.Random;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class ClienteRMI_Gera_txt {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         try {
             
             FileWriter arquivoVoid = new FileWriter("tempos/tempo_execucao_void.txt");
@@ -19,7 +21,11 @@ public class ClienteRMI_Gera_txt {
             ////// MUDAR IP
             ////// Exemplo 
             // Registry registry = LocateRegistry.getRegistry("184.343.345.32", 50051);
-            Registry registry = LocateRegistry.getRegistry("179.99.71.34", 50051);
+            System.out.println("Digite o ip a ser utilizado: ");
+            String ip = sc.nextLine();
+            System.out.println("Digite a porta a ser utilizada: ");
+            int porta = sc.nextInt();
+            Registry registry = LocateRegistry.getRegistry(ip, porta);
             //Testes testes = (Testes) registry.lookup("Testes");
             Testes testes = (Testes) registry.lookup("Testes");
             ClasseTeste classeTeste = (ClasseTeste) registry.lookup("Classe");
@@ -54,6 +60,8 @@ public class ClienteRMI_Gera_txt {
         } catch (Exception e) {
             System.err.println("Erro no cliente: " + e.toString());
             e.printStackTrace();
+        } finally {
+            sc.close();
         }
     }
     
