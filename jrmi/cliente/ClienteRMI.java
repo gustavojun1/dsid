@@ -24,7 +24,7 @@ public class ClienteRMI {
             
             ClasseTeste classe = (ClasseTeste) registry.lookup("Classe");
             
-            while (true) {
+escolheTeste: while (true) {
                 
                 System.out.println("###".repeat(8));
                 System.out.println("Escolha o método para testar");
@@ -33,6 +33,7 @@ public class ClienteRMI {
                 System.out.println("3. Long Complex");
                 System.out.println("4. String");
                 System.out.println("5. Classe");
+                System.out.println("6. Encerra Cliente");
 
                 int opcao = sc.nextInt();
                 System.out.println("###".repeat(8));
@@ -54,6 +55,8 @@ public class ClienteRMI {
                     case 5:
                         testarClasse(classe);
                         break;
+                    case 6:
+                        break escolheTeste;                     
                     default:
                         System.out.println("Opção inválida");
                     }
