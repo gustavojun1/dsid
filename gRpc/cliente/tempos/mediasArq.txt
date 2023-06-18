@@ -1,0 +1,5 @@
+Void: 0.00019828
+Long de 1 arg: 0.00019293
+Long de 8 arg: 0.00019717
+String: 0.00174165
+Classe: 0.0002013

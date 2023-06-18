@@ -26,7 +26,6 @@ public class ClienteRMI_Gera_txt {
             System.out.println("Digite a porta a ser utilizada: ");
             int porta = sc.nextInt();
             Registry registry = LocateRegistry.getRegistry(ip, porta);
-            //Testes testes = (Testes) registry.lookup("Testes");
             Testes testes = (Testes) registry.lookup("Testes");
             ClasseTeste classeTeste = (ClasseTeste) registry.lookup("Classe");
             

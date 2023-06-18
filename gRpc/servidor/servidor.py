@@ -74,7 +74,8 @@ def servidor():
     
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
     greet_pb2_grpc.add_GreeterServicer_to_server(GreeterServicer(), server)
-    server.add_insecure_port("[::]:50000")
+    port = input('Digite a porta a ser utilizada: ')
+    server.add_insecure_port("[::]:" + port)
     server.start()
     server.wait_for_termination()
 
