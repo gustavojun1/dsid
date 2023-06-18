@@ -10,7 +10,10 @@ def cliente():
     ### IP DO SERVIDOR ###
     #Exemplo
     #with grpc.insecure_channel('123.123.123.43:50051') as channel:
-    with grpc.insecure_channel('179.99.71.34:50000') as channel:
+    ip = input("Digite o ip a ser utilizado: ")
+    porta = input("Digite a porta a ser utilizada: ")
+    
+    with grpc.insecure_channel(ip + ':' + porta) as channel:
         
         stub = greet_pb2_grpc.GreeterStub(channel)
         rpc_call = 1

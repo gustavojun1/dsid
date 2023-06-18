@@ -9,8 +9,10 @@ def cliente():
     ### MUDAR IP ###
     #Exemplo 179.99.71.34
     #with grpc.insecure_channel('201.26.6.236:50051') as channel:
+    ip = input("Digite o ip a ser utilizado: ")
+    porta = input("Digite a porta a ser utilizada: ")
     
-    with grpc.insecure_channel('179.99.71.34:50000') as channel:
+    with grpc.insecure_channel(ip + ':' + porta) as channel:
         
         stub = greet_pb2_grpc.GreeterStub(channel)
         
