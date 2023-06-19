@@ -16,8 +16,8 @@ public class ServidorRMI {
             
             ClasseTeste stub1 = (ClasseTeste) UnicastRemoteObject.exportObject(teste5, 50050);
             Testes stub2 = (Testes) UnicastRemoteObject.exportObject(testes, 50050);
-
-            System.out.println("Digite a porta a ser utilizada: ");
+            // porta 50050 reservada para o stub
+            System.out.println("Digite a porta a ser utilizada (não utilizar porta 50050!): ");
             int porta = sc.nextInt();
 
             Registry registry = LocateRegistry.createRegistry(porta);

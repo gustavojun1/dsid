@@ -8,23 +8,24 @@ import java.util.Scanner;
 public class ClienteRMI {
     public static void main(String[] args) {
         
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         try {
 
-            ////// MUDAR IP
+           ////// MUDAR IP
             ////// Exemplo 
             // Registry registry = LocateRegistry.getRegistry("198.168.15.11", 50051);
             System.out.println("Digite o ip a ser utilizado: ");
-            String ip = sc.nextLine();
+            String ip = scanner.nextLine();
             System.out.println("Digite a porta a ser utilizada: ");
-            int porta = sc.nextInt();
+            int porta = scanner.nextInt();
+            
             Registry registry = LocateRegistry.getRegistry(ip, porta);
 
             Testes testes = (Testes) registry.lookup("Testes");
             
             ClasseTeste classe = (ClasseTeste) registry.lookup("Classe");
             
-escolheTeste: while (true) {
+            while (true) {
                 
                 System.out.println("###".repeat(8));
                 System.out.println("Escolha o método para testar");
@@ -33,9 +34,8 @@ escolheTeste: while (true) {
                 System.out.println("3. Long Complex");
                 System.out.println("4. String");
                 System.out.println("5. Classe");
-                System.out.println("6. Encerra Cliente");
 
-                int opcao = sc.nextInt();
+                int opcao = scanner.nextInt();
                 System.out.println("###".repeat(8));
                 
                 long startTime = System.currentTimeMillis();
@@ -55,8 +55,6 @@ escolheTeste: while (true) {
                     case 5:
                         testarClasse(classe);
                         break;
-                    case 6:
-                        break escolheTeste;                     
                     default:
                         System.out.println("Opção inválida");
                     }
@@ -70,7 +68,7 @@ escolheTeste: while (true) {
             System.err.println("Erro no cliente: " + e.toString());
             e.printStackTrace();
         }
-        sc.close();
+        scanner.close();
     }
 
     public static void testarVoid(Testes testes) throws RemoteException {
